@@ -2,5 +2,6 @@
   - name: setting up load balancer 
     hosts: lb
     become: true
+    become_user: root
     roles: 
       - { role: geerlingguy.haproxy }
