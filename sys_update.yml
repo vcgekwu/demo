@@ -1,0 +1,9 @@
+---
+  - name: upgrade all packages
+    hosts: prod
+    become: true
+    become_user: root
+    tasks:
+      - yum:
+          name: '*'
+          state: latest

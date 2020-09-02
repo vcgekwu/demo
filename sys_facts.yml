@@ -1,0 +1,10 @@
+---
+  - name: Verify host connectivity and display hosts facts
+    hosts: prod
+    gather_facts: no
+    tasks:
+      - setup:
+        register: system_facts
+        
+      - debug:
+          var: system_facts
