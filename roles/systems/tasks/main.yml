@@ -1,0 +1,19 @@
+---
+# tasks file for systems
+  - name: create systems users
+    user: 
+      name: "{{ item.key }}"
+      uid:  "{{ item.value.uid | default('none') }}"
+      shell: "{{ item.value.shell | default('none') }}"
+      home: "{{ item.value.home  | default('none')  }}"
+      state: "{{ item.value.state  | default('none') }}"
+    with_dict: "{{ users }}"
+    #when: ansible_os_family == 'RedHat' 
+      
+  - name: install common systems packages
+    package:  
+      name:  "{{ item }}"
+      state: present
+    with_items: 
+      - "{{ systems.packages }}"
+    #when: ansible_os_family == 'RedHat'

@@ -1,0 +1,18 @@
+[local]
+localhost ansible_connection=local
+
+[lb]
+server11
+
+[app]
+server22
+server33
+server55  ansible_user=devop ansible_ssh_pass=linux
+
+[db]
+server44
+
+[prod:children]
+lb
+app
+db

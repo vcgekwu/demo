@@ -1,0 +1,22 @@
+---
+  - name: open http firewall service
+    hosts: prod
+    become: true
+    tasks:
+      - name: open port 80
+        firewalld: 
+          service: http
+          permanent: yes
+        #  imediately: yes
+          state: enabled
+
+      - name: open https port
+        firewalld:
+          service: https
+          permanent: yes
+          state: enabled
+
+      - name: restart firewall service
+        service:
+          name: firewalld
+          state: restarted

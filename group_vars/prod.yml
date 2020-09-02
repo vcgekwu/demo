@@ -1,0 +1,49 @@
+---
+
+  users:
+    admin:
+      uid: 5005
+      shell: /bin/bash
+      home: /home/admin
+      state: present
+ #   dojo:
+  #    state: absent
+      
+  systems: 
+    packages: 
+      - ntp 
+      - tree 
+      - vim
+
+  fav:
+    color: yellow
+    fruit: guava
+
+  dbconn:
+    host: 192.168.43.123
+    user: devop
+    pass: redhat5000
+    db: devopsdemo
+
+  haproxy_backend_servers:
+    - name: server22
+      address: 192.168.43.121:80
+    - name: server33
+      address: 192.168.43.122:80
+#    - name: server55
+#      address: 192.168.43.170:80
+  haproxy_backend_httpchk: ''
+  haproxy_socket: /var/run/haproxy.sock
+
+  mysql_enabled_on_startup: yes
+  mysql_root_password: linux5000
+  mysql_databases:
+    - name: devopsdemo
+      encoding: latin1
+      collation: latin1_general_ci
+  mysql_users:
+    - name: devop
+      host: "%"
+      password: redhat5000
+      priv: "devopsdemo.*:ALL"
+  mysql_bind_address: '0.0.0.0'
