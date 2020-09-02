@@ -2,6 +2,7 @@
   - name: open http firewall service
     hosts: prod
     become: true
+    become_user: root
     tasks:
       - name: open port 80
         firewalld: 
