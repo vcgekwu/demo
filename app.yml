@@ -1,9 +1,7 @@
 ---
   - hosts: app
     become: true
-    vars:
-      fav:
-        fruit: mango
+    become_user: root
     roles:
       - { role: apache, tags: www }
       - { role: php, tags: [ 'www', 'php' ] }
